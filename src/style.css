@@ -29,6 +29,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   background-color: #212529;
   color: white;
   padding: 25px 60px;
@@ -86,6 +87,7 @@ a {
 #shop .item img{
   width: 100%;
   padding:5px;
+  border-radius: 8px 8px 0 0; /* topleft topright bottomleft bottom right */
 }
 
 .details {
@@ -126,7 +128,7 @@ a {
   margin-bottom: 20px;
 }
 
-.HomeBtn,
+.homeBtn,
 .checkout,
 .removeAll {
   background-color: #212529;

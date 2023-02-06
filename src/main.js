@@ -2,36 +2,7 @@ const shop = document.getElementById("shop");
 
 console.log(shop);
 
-const shopItemsData = [
-  {
-    id: "qdfioafwe",
-    name: "Casual Shirt",
-    price: 45,
-    desc: "Its just a casual what else you want to know?",
-    img: "/images/img-1.jpg",
-  },
-  {
-    id: "qrgsd",
-    name: "Office Shirt",
-    price: 105,
-    desc: "Wear it to work.",
-    img: "/images/img-2.jpg",
-  },
-  {
-    id: "bhngsgs",
-    name: "T Shirt",
-    price: 25,
-    desc: "Dont T pose in real life.",
-    img: "/images/img-3.jpg",
-  },
-  {
-    id: "sdgvsdfg",
-    name: "Mens Suit",
-    price: 300,
-    desc: "For the people with money.",
-    img: "/images/img-4.jpg",
-  },
-];
+
 
 const generateShop = () => {
   return (shop.innerHTML = shopItemsData.map((x) => {
@@ -58,7 +29,7 @@ const generateShop = () => {
 };
 
 
-const basket = JSON.parse(localStorage.getItem(("prodData"))) || []; /* timestamp 1:43:00 */
+let basket = JSON.parse(localStorage.getItem(("prodData"))) || []; /* timestamp 1:43:00 */
 /* const basket = []; */
 
 const increment =(id) =>{
@@ -74,9 +45,10 @@ const increment =(id) =>{
       search.item +=1;
     }
 
-    localStorage.setItem("prodData",JSON.stringify(basket)); /* key/storage name , name of object being stored */
+    
     update(selectedItem.id);
     /* console.log(basket); */
+    localStorage.setItem("prodData",JSON.stringify(basket)); /* key/storage name , name of object being stored */
 };
 
 const decrement =(id) =>{
@@ -90,11 +62,11 @@ const decrement =(id) =>{
     search.item -=1;
   }
 
-  localStorage.setItem("prodData",JSON.stringify(basket)); /* key/storage name , name of object being stored */
-  
-  basket = basket.filter((x) => x.item !== 0);
   update(selectedItem.id);
+  basket = basket.filter((x) => x.item !== 0); //removes item from basket when qty reduced to 0
+
   /* console.log(basket); */
+  localStorage.setItem("prodData",JSON.stringify(basket)); /* key/storage name , name of object being stored */
 };
 
 const calculation =() =>{ //cart icon amount total items
